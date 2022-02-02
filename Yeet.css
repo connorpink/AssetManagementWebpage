@@ -1,0 +1,189 @@
+img{
+  z-index: 999;
+  object-fit:contain;
+  height: auto;
+  max-width: 30%;
+}
+
+body {
+  background-color: #27323b;
+  font-family: Roboto, sans-serif;
+}
+.header, div {
+  display: flex;
+  flex-direction: row;
+  margin: 3vh;
+  margin-top: 2vh;
+}
+.header {
+  z-index: 90;
+  top: 0;
+  display: flex;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  margin: 0;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  border-radius: 10px;
+  position: fixed;
+  width: 100%;
+}
+.header a {
+  padding: 2vh;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 40px;
+  font-weight: 700;
+  color: #4283b9;
+}
+.header-right {
+  margin: auto;
+  float: none;
+  font-weight: 700;
+  font-size: 30px;
+  color: #000;
+}
+.active {
+  margin-top: auto;
+  margin-bottom: auto;
+  color: #000;
+  float: center;
+
+}
+fieldset {
+    margin: 2vh;
+    font-size: larger;
+  border-radius: 0.2em;
+  color: #fff;
+
+}
+.amount {
+  font-size: larger;
+  margin-left: 2em;
+  padding-right: 1.5em;
+}
+input[type="radio"] {
+  transform: scale(2);
+}
+input[type="number"] {
+  /*transform: scale(1.75);*/
+  width: 10vw;
+  height: 1.5vw;
+  min-height: 20px;
+  min-width: 300px;
+  vertical-align:middle;
+}
+.button {
+  position: fixed;
+  height: 3em;
+  width: 12em;
+  right: 5%;
+  top: 3.8%;
+  font-size: 25px;
+  z-index: 999;
+  background-color: #4283b9;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+.button:active,
+.button:hover {
+  background-color: #4c6477;
+  background-position: 0 0;
+  color: #fff;
+}
+.button:active {
+  opacity: 0.5;
+}
+.button:click {
+  background-color: #4c6477;
+}
+.AddButton {
+  margin-left: 2vh;
+  height: 1.5em;
+  width: 5em;
+  right: 5%;
+  top: 3.8%;
+  font-size: 25px;
+  z-index: 999;
+  background-color: #4283b9;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+.AddButton:active,
+.AddButton:hover {
+  background-color: #4c6477;
+  background-position: 0 0;
+  color: #fff;
+}
+.AddButton:active {
+  opacity: 0.5;
+}
+.AddButton:click {
+  background-color: #4c6477;
+}
+.butt1 {
+  margin-left: 2vh;
+  height: 1.5em;
+  width: 5em;
+  right: 5%;
+  top: 3.8%;
+  font-size: 25px;
+  z-index: 999;
+  background-color: #4283b9;
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+.butt1:active,
+.butt1:hover {
+  background-color: #4c6477;
+  background-position: 0 0;
+  color: #fff;
+}
+.butt1:active {
+  opacity: 0.5;
+}
+.butt1:click {
+  background-color: #4c6477;
+}
+p {
+  color: #4283b9;
+  font-size: xx-large;
+  font-weight: 700;
+}
+.content {
+  margin-top: 17vh;
+  border-color: #27323b;
+  border-style: solid;
+}
+.instock {
+  margin-left: 10vh;
+  font-size: larger;
+}
+
+.radioLabel {
+    padding: 0.5em;
+}
