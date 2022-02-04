@@ -24,11 +24,11 @@ Youtube video instruction for below https://www.youtube.com/watch?v=4_NP_WYFmIM 
 
 10. Go to c:\xampp\sendmail\sendmail.ini
 
-11. Set smtp_server=smtp.gmail.com
+11. Set smtp_server=smtp.gmail.com or relay.prhc.on.ca
 
-12. Set smtp_port=465
+12. Set smtp_port=465 or 25
 
-13. Set smtp_ssl=ssl
+13. Set smtp_ssl=ssl or none
 
 14. Set auth_username=*YOUR EMAIL HERE*
 15. Set auth_password=*YOUR PASSWORD HERE*
@@ -47,7 +47,7 @@ Youtube video instruction for below https://www.youtube.com/watch?v=4_NP_WYFmIM 
 
 23. Uncomment out two lines and set them equal to
 
-24. sendmail_from = *YOUR EMAIL HERE*
+24. sendmail_from = *YOUR EMAIL HERE* 
 25. sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
 
 }
