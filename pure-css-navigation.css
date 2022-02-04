@@ -5,16 +5,16 @@ https://github.com/adamculpepper/pure-css-navigation
 */
 
 /* Customizable styles */
-.pure-css-nav > nav ul li a			{color:#555;}
+.pure-css-nav > nav ul li a			{color:rgb(55, 145, 197);}
 
-.pure-css-nav > nav > ul > li			{margin-right:1px;}
+.pure-css-nav > nav > ul > li			{margin-right:1px; border-radius: 10px; width: 40vh;}
 
 /* Level 1 */
-.pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05);}
-.pure-css-nav > nav ul li a			{font-size:1rem; /*line-height:50px;*/ padding:13px 20px;}
+.pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05); }
+.pure-css-nav > nav ul li a			{font-size:2rem; /*line-height:50px;*/ padding:13px 20px;}
 
 /* Level 2 and beyond */
-.pure-css-nav > nav ul ul				{background-color:#d9d9d9;}
+.pure-css-nav > nav ul ul				{background-color:rgba(255, 255, 255, 0.9);}
 .pure-css-nav > nav ul ul li a			{font-size:0.8rem; /*line-height:35px;*/ padding:8px 20px;}
 
 /* Hover colors */
@@ -46,7 +46,7 @@ z-index: 1000;
 /* Level 1 */
 .pure-css-nav > nav ul					{display:flex; flex-wrap:wrap;}
 .pure-css-nav > nav ul li				{overflow:hidden; white-space:nowrap; text-align:left;}
-.pure-css-nav > nav ul li:hover			{overflow:visible;}
+.pure-css-nav > nav ul li:hover			{overflow:visible; }
 .pure-css-nav > nav ul > li				{position:relative;}
 .pure-css-nav > nav ul li a				{display:block; /*height:100%;*/}
 
@@ -258,24 +258,6 @@ z-index: 1000;
 .pure-css-nav.mobile-nav *:before,
 .pure-css-nav.mobile-nav *:after {animation-play-state:paused!important;}
 */
-
-
-
-
-
-
-
-.pure-css-nav.mobile-nav:not(:hover) * {
-	-webkit-transition: none !important;
-	-moz-transition: none !important;
-	-ms-transition: none !important;
-	-o-transition: none !important;
-	border:2px solid red;
-}
-
-
-
-
 
 }
 

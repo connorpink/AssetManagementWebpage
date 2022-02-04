@@ -15,6 +15,13 @@ body {
   margin: 3vh;
   margin-top: 2vh;
 }
+
+h1 {
+    color: whitesmoke;
+    max-width: auto;
+    font-weight: bold;
+}
+
 .header {
   z-index: 90;
   top: 0;
@@ -160,13 +167,13 @@ p {
 /*fieldset .invis {
   visibility: hidden;
   max-height: 0; 
-}*/
+} */
 
 .navigationContainer{
   z-index: 999;
   display:flex;
   position: fixed;
   top:1.5%;
-  right: 35%;
+  right: 25%;
 }
 

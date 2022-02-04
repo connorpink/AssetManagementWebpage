@@ -11,17 +11,10 @@
         if ($radioVal == '1'){
           $con = mysqli_connect("localhost","root","sysadm","prhc");
           $amount = $_POST["numberBox" . $itemName];
-          if ($amount >= 5) {
-            echo"<div class='popup' onclick='myFunction()'>Click me!
-            <span class='popuptext' id='myPopup'>Popup text...</span>
-          </div>";
-          }
-          else {
           $sql = "UPDATE inventory SET Count = Count + {$amount} WHERE Item = '{$itemName}';";
           $rs = mysqli_query($con, $sql);
           date_default_timezone_set("America/New_York");
           wh_log("Time: " . date("h:i:sa") ."| Item In: " . $itemName . " Amount: " . $amount . "\n");
-          }
         }
         #else if the radio out button is pressed for Printers
         else if ($radioVal == '2'){
@@ -51,6 +44,9 @@
 
   //create form data fieldset for the item retrieved from database
   function CreateItemField($itemName){
+    $itemcount = item_count($itemName);
+    $thresh = get_thresh($itemName);
+    
     echo "<fieldset class = 'invis'>";
       echo "<p>$itemName</p>";
       echo "<input id='RadioIn$itemName' name='$itemName"."inout' type='radio' value='1'></input>";
@@ -64,10 +60,24 @@
       echo "<button onclick='AddRemoveAmount(3,\"$itemName\")'class='AddButton'id='button$itemName' type='button'>+3 </button>";
       echo "<label class='amount' for='amount'>Amount:</label>" ;
       echo "<input type='number' min='0' max='500' id='numberBox$itemName' name='numberBox$itemName'></input>";
-      echo "<label class='instock'>Instock: ";echo item_count($itemName);echo"</label>";  
+      echo "<label class='instock'>Instock: ";echo $itemcount;echo"</label>";  
     echo "</fieldset>";
+
+    if ($itemcount <= $thresh){
+
+      if(check_email($itemName) == NULL)
+      {
+
+        add_email($itemName);
+
+      }
+
+      emailJosh($itemcount, $thresh, $itemName);
+
+    }
     
   }
+ 
   //function to count current number of items
   function item_count($item) {
       
@@ -78,6 +88,44 @@
     mysqli_close($con);
 
     return $dock[0];
+  }
+  
+  function get_thresh($item){
+
+    $con = mysqli_connect("localhost","root","sysadm","prhc");
+    $sql = "SELECT Threshold FROM inventory WHERE Item = '{$item}'";
+    $rs = mysqli_query($con, $sql);
+    $thresh = mysqli_fetch_array($rs);
+    mysqli_close($con);
+
+    return $thresh[0];
+
+  }
+
+  function check_email($item){
+
+    $con = mysqli_connect("localhost","root","sysadm","prhc");
+    $sql = "SELECT StoredDate FROM sendemail WHERE Item = '{$item}'";
+    $rs = mysqli_query($con, $sql);
+    $email = mysqli_fetch_array($rs);
+    mysqli_close($con);
+
+    if($email == NULL){
+      return NULL;
+    }
+    else{
+    return $email[0];
+    }
+
+  }
+
+  function add_email($item){
+
+    $con = mysqli_connect("localhost","root","sysadm","prhc");
+    $sql = "INSERT INTO sendemail (Item, StoredDate) VALUES ('$item', '0000-00-00');";
+    $rs = mysqli_query($con, $sql);
+    mysqli_close($con);
+
   }
   ?>
   <script src="https://kit.fontawesome.com/3c96de835b.js" crossorigin="anonymous"></script>
@@ -99,36 +147,51 @@
 
 <body>
 <!-- --------------------------------------dropdown stuff   -->
+
 <div class = "navigationContainer">
 <div class="pure-css-nav nav-justified nav-horizontal nav-font-icons">
-            <nav>
-              <ul>
-              <li><a href="">Computers</a></li>
-              <li><a href="">Monitors</a></li>
-                <li>
-                  <a href="">PAIN</a>
-                  <ul>
-                    <li><a href="">lessssss gooooooo</a></li>
-                    <li>
-                      <a href="">pain</a>
-                      <ul>
-                        <li><a href="">goooooooo</a></li>
-                        <li>
-                          <a href="">lesssssssss</a>
-                          <ul>
-                            <li><a href="">lesssss goooooo</a></li>
-                            <li><a href="">lesssss goooooo</a></li>
-                            <li><a href="">lesssss goooooo</a></li>
-                          </ul>
-                        </li>
-                        <li><a href="">pain</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="">pains</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
+
+    <?php
+    
+    $con = mysqli_connect("localhost","root","sysadm","prhc");
+    $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
+    $Categories = mysqli_query($con, $sql);
+    while($newrow = $Categories->fetch_row())
+          {
+          $newrows[] = $newrow;
+          }
+
+    echo "
+    <nav>
+    <ul>
+    <li><a>items</a>
+      <ul>";
+      
+      foreach ($newrows as &$Category){
+        $Category = implode($Category);
+        
+        if ($Category != null){
+          echo "
+            <li onclick = \"document.getElementById('$Category').scrollIntoView({behavior:'smooth', block: 'center'});\">
+              <a>$Category</a>
+            </li>";
+        }
+        else {
+          echo "
+            <li onclick = \"document.getElementById('Uncategorized').scrollIntoView({behavior:'smooth', block: 'center'});\">
+              <a>Uncategorized</a>
+            </li>";
+        }
+        }
+              
+        echo "
+            </ul>
+          </li>
+          </ul>
+          </nav>
+      ";
+    ?>
+            
           </div>
 
   </div>
@@ -144,23 +207,99 @@
           
       </div>
     </div>
-    <form action="<?=htmlentities($_SERVER['PHP_SELF']);?>"  method="POST">
+
+    <script>
+      function validate(form) {
+        NumberBoxes = document.querySelectorAll('input[type=number]');
+        
+          for (box of NumberBoxes){
+            if(box.valueAsNumber >= 5) {
+              if (!confirm('You picked '+box.valueAsNumber+' items for '+box.name+', are you sure?')){ return false;} 
+            } 
+          }
+      }
+      </script>
+
+    <form action="<?=htmlentities($_SERVER['PHP_SELF']);?>"  method="POST" onsubmit="return validate(this);">
       <fieldset class='content'>
         <?php
-        
-        //get array from database
+        function emailJosh($count, $threshold, $item) {
+         //get array from database
           $con = mysqli_connect("localhost","root","sysadm","prhc");
           $sql = "SELECT Item FROM inventory;";
           $result = mysqli_query($con, $sql);
+
+        //Date Time
+        $Yes = "SELECT StoredDate FROM sendemail WHERE Item = '$item';";
+        $dateResult = mysqli_query($con, $Yes);
+        $dateResult = mysqli_fetch_array($dateResult);
+
+        $currentDate = date("Y-m-d ");
+        $seconds = abs(strtotime($currentDate) - strtotime($dateResult[0]));
+        if($seconds >= 259200){
+          $newDate = "UPDATE sendemail SET StoredDate = '$currentDate' WHERE Item = '$item';";
+          $resultDate = mysqli_query($con, $newDate);
+          if ($count < $threshold) {
+         mail('connor.millson@gmail.com', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: connor.millson@gmail.com'); 
+          }
+          } else {
+          }
+          mysqli_close($con);
+
+        }
+
+        
+          $con = mysqli_connect("localhost","root","sysadm","prhc");
+          $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC;";
+          $result = mysqli_query($con, $sql);
+
           mysqli_close($con);
 
           while($row = $result->fetch_row())
           {
           $rows[] = $row;
           }
-          foreach ($rows as &$item){
-            $item = implode($item);
-            CreateItemField($item);
+
+          foreach ($rows as &$newItem){
+            $newItem = implode($newItem);
+            
+            if ($newItem != ""){
+              echo "<h1 id='$newItem'> $newItem </h1>";
+              $con = mysqli_connect("localhost","root","sysadm","prhc");
+              $sql = "SELECT Item FROM inventory WHERE Category='$newItem';";
+              $categoryResult2 = mysqli_query($con, $sql);
+
+              mysqli_close($con);
+              $newItemrows2 = [];
+              while($newItemrow2 = $categoryResult2->fetch_row())
+              {
+                $newItemrows2[] = $newItemrow2;
+              }
+              foreach($newItemrows2 as &$rowitem2){
+                $rowitem2 = implode($rowitem2);
+
+                CreateItemField($rowitem2);
+              }
+            }
+            else{
+              echo "<h1 id='Uncategorized'> Uncategorized </h1>";  
+              $con = mysqli_connect("localhost","root","sysadm","prhc");
+              $sql = "SELECT Item FROM inventory WHERE Category=''";
+              $categoryResult = mysqli_query($con, $sql);
+
+              mysqli_close($con);
+
+              while($newItemrow = $categoryResult->fetch_row())
+              {
+                $newItemrows[] = $newItemrow;
+              }
+              foreach($newItemrows as &$rowitem){
+                $rowitem = implode($rowitem);
+
+                CreateItemField($rowitem);
+              }
+            }
+            
           }
         // and then run function with each variable in array
 
@@ -173,22 +312,33 @@
     </form>
 
     <?php
-
-      
-
-      
       if(isset($_POST['submit'])) {
-        foreach ($rows as &$item){
-          change($item);
-        }
-        #echo "<meta http-equiv='refresh' content='0'>";
+          $con = mysqli_connect("localhost","root","sysadm","prhc");
+          $sql = "SELECT Item FROM inventory;";
+          $result = mysqli_query($con, $sql);
+
+          mysqli_close($con);
+
+          while($row = $result->fetch_row())
+          {
+            $rows[] = $row;
+          }
+          foreach ($rows as &$item){
+            $item = implode($item);
+            
+            change($item);
+
+          }
+
+        echo "<meta http-equiv='refresh' content='0'>";
         session_destroy();
         $_POST = array();
+
       }
     ?>
 
     <script>
-
+// Refresh page on 3 min inactivity
 let time = new Date().getTime();
 const setActivityTime = (e) => {
   time = new Date().getTime();
@@ -206,17 +356,15 @@ const refresh = () => {
 
 setTimeout(refresh, 10000);
 
+  // Make buttons change value in the textbox
       function AddRemoveAmount(amount,itemName) {
         idnameNumber = 'numberBox'+itemName;
         currentValue = Number(document.getElementById(idnameNumber).value);
         amount = amount + currentValue;
         Number(document.getElementById(idnameNumber).value = amount);
-
-        if (Number(document.getElementById(idnameNumber).value > 5)) {
-        
-          alert("You have selected greater than 5 items");
-        }
       }
+
+      // Remove form resubmission data on refresh
 
       if ( window.history.replaceState ) {
           window.history.replaceState( null, null, window.location.href );
