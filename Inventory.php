@@ -64,16 +64,17 @@
     echo "</fieldset>";
 
     if ($itemcount <= $thresh){
-      echo "<script> document.getElementById('instock$itemName').style.color = 'orange'; </script>";
+      echo "<script> document.getElementById('instock$itemName').style.color = 'red'; </script>";//make red if below target
+
       if(check_email($itemName) == NULL)
       {
-
         add_email($itemName);
-
       }
-
       emailJosh($itemcount, $thresh, $itemName);
 
+    }
+    else if ($itemcount <= ($thresh * 1.5)){//make orange if close to the threshold
+      echo "<script> document.getElementById('instock$itemName').style.color = 'orange'; </script>";
     }
     
   }
