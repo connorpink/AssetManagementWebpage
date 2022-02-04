@@ -2,47 +2,46 @@
 
 Setup:
 
-Install xampp
+1. Install xampp
 
-Apache Config set $cfg['Servers'][$i]['auth_type'] = 'cookie';
+2. Apache Config phpMyAdmin set $cfg['Servers'][$i]['auth_type'] = 'cookie';
 
-Drop this sql in your phpmyadmin SET PASSWORD FOR 'root'@'localhost' = PASSWORD('sysadm');
+3. Open Apache config (httpd-xampp.conf) se all local to all granted
 
-Make a database called prhc
+4. Drop this sql in your phpmyadmin, SET PASSWORD FOR 'root'@'localhost' = PASSWORD('sysadm');
 
-Import sql file attatched to repo
+5. Make a database called prhc
+
+6. Import sql file attatched to repo
 
 Youtube video instruction for below https://www.youtube.com/watch?v=4_NP_WYFmIM  {
 
-Go to c:\xampp\sendmail\sendmail.ini
+7. Go to c:\xampp\sendmail\sendmail.ini
 
-Set smtp_server=smtp.gmail.com
+8. Set smtp_server=smtp.gmail.com
 
-Set smtp_port=465
+9. Set smtp_port=465
 
-Set smtp_ssl=ssl
+10. Set smtp_ssl=ssl
 
-Set auth_username=*YOUR EMAIL HERE*
-Set auth_password=*YOUR PASSWORD HERE*
+11. Set auth_username=*YOUR EMAIL HERE*
+12. Set auth_password=*YOUR PASSWORD HERE*
 
-Go to this link https://myaccount.google.com/
-Make sure there is no 2FA on your email and to allow less secure apps
+13. Go to this link https://myaccount.google.com/
+14. Make sure there is no 2FA on your email and to allow less secure apps
 
-Go to c:\xampp\php\php.ini
+15. Go to c:\xampp\php\php.ini
 
-Find mail function
+16. Find mail function
 
-Comment out two lines by adding a ; in front of them 
+17. Comment out two lines by adding a ; in front of them 
 
-;SMTP=localhost
-;smtp_port=25
+18. ;SMTP=localhost
+19. ;smtp_port=25
 
-Uncomment out two lines and set them equal to
+20. Uncomment out two lines and set them equal to
 
-sendmail_from = *YOUR EMAIL HERE*
-sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
+21. sendmail_from = *YOUR EMAIL HERE*
+22. sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
 
 }
-
-Open Apache config (httpd-xampp.conf){
-
