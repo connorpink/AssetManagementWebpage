@@ -2,7 +2,7 @@
 
 Setup:
 
-1. Install xampp
+1. Install xampp 7.4.27
 
 2. Install Github Desktop
 
@@ -12,7 +12,7 @@ Setup:
 
 5. Apache Config phpMyAdmin set $cfg['Servers'][$i]['auth_type'] = 'cookie';
 
-6. Open Apache config (httpd-xampp.conf) se all local to all granted
+6. Open Apache config (httpd-xampp.conf) set all local to all granted
 
 7. Drop this sql in your phpmyadmin, SET PASSWORD FOR 'root'@'localhost' = PASSWORD('sysadm');
 
