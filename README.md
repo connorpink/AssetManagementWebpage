@@ -2,47 +2,52 @@
 
 Setup:
 
-Install xampp
+1. Install xampp
 
-Apache Config set $cfg['Servers'][$i]['auth_type'] = 'cookie';
+2. Install Github Desktop
 
-Drop this sql in your phpmyadmin SET PASSWORD FOR 'root'@'localhost' = PASSWORD('sysadm');
+3. Clone repository Webpage to C:\xampp\htdocs
 
-Make a database called prhc
+4. Open xampp
 
-Import sql file attatched to repo
+5. Apache Config phpMyAdmin set $cfg['Servers'][$i]['auth_type'] = 'cookie';
+
+6. Open Apache config (httpd-xampp.conf) se all local to all granted
+
+7. Drop this sql in your phpmyadmin, SET PASSWORD FOR 'root'@'localhost' = PASSWORD('sysadm');
+
+8. Make a database called prhc
+
+9. Import sql file attatched to repo
 
 Youtube video instruction for below https://www.youtube.com/watch?v=4_NP_WYFmIM  {
 
-Go to c:\xampp\sendmail\sendmail.ini
+10. Go to c:\xampp\sendmail\sendmail.ini
 
-Set smtp_server=smtp.gmail.com
+11. Set smtp_server=smtp.gmail.com
 
-Set smtp_port=465
+12. Set smtp_port=465
 
-Set smtp_ssl=ssl
+13. Set smtp_ssl=ssl
 
-Set auth_username=*YOUR EMAIL HERE*
-Set auth_password=*YOUR PASSWORD HERE*
+14. Set auth_username=*YOUR EMAIL HERE*
+15. Set auth_password=*YOUR PASSWORD HERE*
 
-Go to this link https://myaccount.google.com/
-Make sure there is no 2FA on your email and to allow less secure apps
+16. Go to this link https://myaccount.google.com/
+17. Make sure there is no 2FA on your email and to allow less secure apps
 
-Go to c:\xampp\php\php.ini
+18. Go to c:\xampp\php\php.ini
 
-Find mail function
+19. Find mail function
 
-Comment out two lines by adding a ; in front of them 
+20. Comment out two lines by adding a ; in front of them 
 
-;SMTP=localhost
-;smtp_port=25
+21. ;SMTP=localhost
+22. ;smtp_port=25
 
-Uncomment out two lines and set them equal to
+23. Uncomment out two lines and set them equal to
 
-sendmail_from = *YOUR EMAIL HERE*
-sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
+24. sendmail_from = *YOUR EMAIL HERE*
+25. sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
 
 }
-
-Open Apache config (httpd-xampp.conf){
-
