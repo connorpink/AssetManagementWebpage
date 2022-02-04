@@ -60,11 +60,11 @@
       echo "<button onclick='AddRemoveAmount(3,\"$itemName\")'class='AddButton'id='button$itemName' type='button'>+3 </button>";
       echo "<label class='amount' for='amount'>Amount:</label>" ;
       echo "<input type='number' min='0' max='500' id='numberBox$itemName' name='numberBox$itemName'></input>";
-      echo "<label class='instock'>Instock: ";echo $itemcount;echo"</label>";  
+      echo "<label class='instock' id='instock$itemName'>Instock: ";echo $itemcount;echo"</label>";  
     echo "</fieldset>";
 
     if ($itemcount <= $thresh){
-
+      echo "<script> document.getElementById('instock$itemName').style.color = 'orange'; </script>";
       if(check_email($itemName) == NULL)
       {
 
@@ -164,7 +164,7 @@
     echo "
     <nav>
     <ul>
-    <li><a>items</a>
+    <li><a>Categories</a>
       <ul>";
       
       foreach ($newrows as &$Category){
