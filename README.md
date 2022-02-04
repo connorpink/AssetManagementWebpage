@@ -43,7 +43,7 @@ sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
 }
 
 Open Apache config (httpd-xampp.conf){
-
+"
 #
 # XAMPP settings
 #
@@ -153,5 +153,5 @@ ScriptAlias /php-cgi/ "C:/xampp/php/"
         ErrorDocument 403 /error/XAMPP_FORBIDDEN.html.var
     </Directory>
 </IfModule>
-
+"
 }
