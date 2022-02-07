@@ -8,7 +8,7 @@
         $radioVal = $_POST[$itemName . "inout"];
         #if radio in is selected
         if ($radioVal == '1'){
-          $con = mysqli_connect("localhost","root","sysadm","prhc");
+          $con = connect();
           $amount = $_POST["numberBox" . $itemName];
           //update the database with changes
           $sql = "UPDATE inventory SET Count = Count + {$amount} WHERE Item = '{$itemName}';";
@@ -19,7 +19,7 @@
         }
         #else if the radio out button is selected
         else if ($radioVal == '2'){
-          $con = mysqli_connect("localhost","root","sysadm","prhc");
+          $con = connect();
           $amount = $_POST["numberBox" . $itemName];
           //update the database with changes
           $sql = "UPDATE inventory SET Count = Count - {$amount} WHERE Item = '{$itemName}';";

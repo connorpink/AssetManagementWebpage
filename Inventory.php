@@ -12,6 +12,7 @@
   include "includes/get_thresh.php";
   include "includes/item_count.php";
   include "includes/wh_log.php";
+  include "includes/connect.php";
   ?>
   <script src="https://kit.fontawesome.com/3c96de835b.js" crossorigin="anonymous"></script>
 
@@ -32,7 +33,7 @@
 <div class="pure-css-nav nav-justified nav-horizontal nav-font-icons">
     <?php
     //query the categories from the database
-    $con = mysqli_connect("localhost", "root", "sysadm", "prhc");
+    $con = connect();
     $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
     $Categories = mysqli_query($con, $sql);
     while ($newrow = $Categories->fetch_row()) {
@@ -90,7 +91,7 @@
       <fieldset class='content'>
         <?php
         //get all categories from database ordered by category with uncategorized at the bottom
-        $con = mysqli_connect("localhost", "root", "sysadm", "prhc");
+        $con = connect();
         $sql =
             "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC;";
         $result = mysqli_query($con, $sql);
@@ -107,7 +108,7 @@
             if ($newItem != "") {
                 //create the header and then create all the itemfields which follow it
                 echo "<h1 id='$newItem'> $newItem </h1>";
-                $con = mysqli_connect("localhost", "root", "sysadm", "prhc");
+                $con = connect();
                 $sql = "SELECT Item FROM inventory WHERE Category='$newItem';";
                 $categoryResult2 = mysqli_query($con, $sql);
 
@@ -127,7 +128,7 @@
                 //create the header and then create all the itemfields which follow it
 
                 echo "<h1 id='Uncategorized'> Uncategorized </h1>";
-                $con = mysqli_connect("localhost", "root", "sysadm", "prhc");
+                $con = connect();
                 $sql = "SELECT Item FROM inventory WHERE Category=''";
                 $categoryResult = mysqli_query($con, $sql);
 
@@ -151,7 +152,7 @@
 
     <?php //when form is submit run the change function on all items in the database
     if (isset($_POST["submit"])) {
-        $con = mysqli_connect("localhost", "root", "sysadm", "prhc");
+        $con = connect();
         $sql = "SELECT Item FROM inventory;";
         $result = mysqli_query($con, $sql);
 

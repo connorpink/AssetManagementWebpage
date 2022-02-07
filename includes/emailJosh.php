@@ -2,7 +2,7 @@
 // Send inventory notice emails to Josh and James
   function emailJosh($count, $threshold, $item) {
       //get array from database
-      $con = mysqli_connect("localhost","root","sysadm","prhc");
+      $con = connect();
       $sql = "SELECT Item FROM inventory;";
       $result = mysqli_query($con, $sql);
 
