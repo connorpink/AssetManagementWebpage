@@ -72,7 +72,7 @@
             
   </div>
   </div>
-        <!-- --------------------------------------dropdown stuff   -->
+        <!-- --------------------------------------end of dropdown stuff   -->
     <div class='header'>
         <a class='logo'>PRHC</a>
         <div class='header-right'>

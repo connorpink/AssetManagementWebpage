@@ -1,3 +1,3 @@
 <?php
-$pass = "sysadm";
+$pass = "sysadm";//your password here
 ?>
