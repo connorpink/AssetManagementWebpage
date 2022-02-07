@@ -14,9 +14,9 @@ Setup:
 
 6. Open Apache config (httpd-xampp.conf) set all local to all granted
 
-7. Drop this sql in your phpmyadmin, SET PASSWORD FOR 'root'@'localhost' = PASSWORD('sysadm');
+7. Drop this sql in your phpmyadmin, SET PASSWORD FOR 'root'@'localhost' = PASSWORD('your_password_here');
 
-8. Make a database called prhc
+8. Make a database called storage
 
 9. Import sql file attatched to repo
 
