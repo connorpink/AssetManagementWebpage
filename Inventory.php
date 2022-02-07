@@ -3,7 +3,7 @@
 <head>
 
   <?php //function defintitions
-//function defintitions
+  //function defintitions
   include "includes/change.php";
   include "includes/add_email.php";
   include "includes/check_email.php";
