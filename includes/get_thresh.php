@@ -3,7 +3,7 @@
 function get_thresh($item){
     
     //Connects to database and gets the threshold for the specified item and returns it
-    $con = mysqli_connect("localhost","root","sysadm","prhc");
+    $con = connect();
     $sql = "SELECT Threshold FROM inventory WHERE Item = '{$item}'";
     $rs = mysqli_query($con, $sql);
     $thresh = mysqli_fetch_array($rs);

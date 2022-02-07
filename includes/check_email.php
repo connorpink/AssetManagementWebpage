@@ -3,7 +3,7 @@
 function check_email($item){
 
     //Connects to database and gets when the email was stored
-    $con = mysqli_connect("localhost","root","sysadm","prhc");
+    $con = connect();
     $sql = "SELECT StoredDate FROM sendemail WHERE Item = '{$item}'";
     $rs = mysqli_query($con, $sql);
     $email = mysqli_fetch_array($rs);

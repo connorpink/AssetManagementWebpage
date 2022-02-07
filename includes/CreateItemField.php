@@ -32,7 +32,7 @@ function CreateItemField($itemName){
       {
         add_email($itemName);
       }
-      emailJosh($itemcount, $thresh, $itemName);
+      sendemails($itemcount, $thresh, $itemName);
 
     }
     //else if item count is within 1.5 of the treshold make color orange to signal low stock
