@@ -139,7 +139,6 @@
                 }
                 foreach ($newItemrows as &$rowitem) {
                     $rowitem = implode($rowitem);
-
                     CreateItemField($rowitem);
                 }
             }

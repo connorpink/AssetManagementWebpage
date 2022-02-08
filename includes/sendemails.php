@@ -19,7 +19,7 @@
       $newDate = "UPDATE sendemail SET StoredDate = '$currentDate' WHERE Item = '$item';";
       $resultDate = mysqli_query($con, $newDate);
       if ($count < $threshold) {
-      mail('jleclercn@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca'); 
+      mail('jleclerc@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca'); 
       mail('jdeane@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca');
       }
       } else {

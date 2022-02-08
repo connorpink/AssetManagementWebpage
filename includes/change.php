@@ -2,14 +2,16 @@
 //function to check current form data and submit proper changes to database
 
   function change($itemName){
-    if(isset($_POST['numberBox' . $itemName])) {
-      if(isset($_POST[$itemName . 'inout'])) {
+    //parse string (replace spaces with underscore) here //
+    $underScoreItemName = str_replace(' ', '_', $itemName);
+    if(isset($_POST['numberBox' . $underScoreItemName])) {
+      if(isset($_POST[$underScoreItemName . 'inout'])) {
         //if radio button and number box, have content on submit 
-        $radioVal = $_POST[$itemName . "inout"];
+        $radioVal = $_POST[$underScoreItemName . "inout"];
         #if radio in is selected
         if ($radioVal == '1'){
           $con = connect();
-          $amount = $_POST["numberBox" . $itemName];
+          $amount = $_POST["numberBox" . $underScoreItemName];
           //update the database with changes
           $sql = "UPDATE inventory SET Count = Count + {$amount} WHERE Item = '{$itemName}';";
           $rs = mysqli_query($con, $sql);
@@ -20,7 +22,7 @@
         #else if the radio out button is selected
         else if ($radioVal == '2'){
           $con = connect();
-          $amount = $_POST["numberBox" . $itemName];
+          $amount = $_POST["numberBox" . $underScoreItemName];
           //update the database with changes
           $sql = "UPDATE inventory SET Count = Count - {$amount} WHERE Item = '{$itemName}';";
           $rs = mysqli_query($con, $sql);
