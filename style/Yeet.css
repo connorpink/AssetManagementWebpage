@@ -81,7 +81,7 @@ input[type="number"] {
 .button {
   position: fixed;
   height: 3em;
-  width: 12em;
+  width: 25vh;
   right: 5%;
   top: 3.8%;
   font-size: 25px;

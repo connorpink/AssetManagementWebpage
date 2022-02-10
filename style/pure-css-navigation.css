@@ -7,7 +7,7 @@ https://github.com/adamculpepper/pure-css-navigation
 /* Customizable styles */
 .pure-css-nav > nav ul li a			{color:rgb(55, 145, 197);}
 
-.pure-css-nav > nav > ul > li			{margin-right:1px; border-radius: 10px; width: 40vh;}
+.pure-css-nav > nav > ul > li			{margin-right:1px; border-radius: 10px; width: 25vh;}
 
 /* Level 1 */
 .pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05); }
