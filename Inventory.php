@@ -47,7 +47,7 @@
                 dropDownMenu = document.getElementById('menucontainer');
                 
                 dropDownMenu.style.display = 'none';
-                sleep(500).then(() => {
+                sleep(1500).then(() => {
                     dropDownMenu.style.display = 'inline';
                     document.getElementById('image').focus();
                 });
