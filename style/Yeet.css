@@ -80,7 +80,7 @@ input[type="number"] {
 }
 .button {
   right: 5%;
-  top: 4%;
+  top: 4.9%;
   position: fixed;
   height: 4em;
   width: 12em;
@@ -174,7 +174,7 @@ p {
   display:flex;
   position: fixed;
   right: 25%;
-  top: 0.1%;
+  top: 0.12%;
 
 }
 

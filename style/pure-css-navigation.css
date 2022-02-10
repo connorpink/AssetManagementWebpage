@@ -10,12 +10,12 @@ https://github.com/adamculpepper/pure-css-navigation
 .pure-css-nav > nav > ul > li			{margin-right:1px; border-radius: 10px; width: 40vh;}
 
 /* Level 1 */
-.pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05); }
-.pure-css-nav > nav ul li a			{ font-size:2rem; /*line-height:50px;*/ padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
+.pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05);  }
+.pure-css-nav > nav ul li a			{  /*line-height:50px;*/ font-size: 4vh; padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
 
 /* Level 2 and beyond */
-.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y:scroll; height: 70vh}
-.pure-css-nav > nav ul ul li a			{font-size:1.5rem; /*line-height:35px;*/ padding:8px 20px; width: 36vh;   }
+.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y:scroll; height: 60vh;}
+.pure-css-nav > nav ul ul li a			{ /*line-height:35px;*/ padding:8px 20px; width: 36vh;  }
 
 /* Hover colors */
 .pure-css-nav > nav ul li:hover,
@@ -35,7 +35,7 @@ https://github.com/adamculpepper/pure-css-navigation
 CORE STYLES BELOW - NO TOUCHY
 ////////////////////////// */
 .pure-css-nav > nav {width:100%;
-z-index: 1000;
+z-index: 1000; font-size: 5vh;
 }
 
 .pure-css-nav > nav ul,	
