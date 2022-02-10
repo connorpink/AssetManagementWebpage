@@ -12,11 +12,7 @@
   include "includes/connect.php";
   ?>
   <script src="https://kit.fontawesome.com/3c96de835b.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="style/pure-css-navigation.css" />
   <link rel="stylesheet" href="style/Yeet.css?v=1.0">
   
@@ -28,46 +24,69 @@
 </head>
 
 <body>
-    
-
-
 <!-- --------------------------------------dropdown stuff   -->
-        <?php
-        //query the categories from the database
-        $con = connect();
-        $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
-        $Categories = mysqli_query($con, $sql);
-        while ($newrow = $Categories->fetch_row()) {
-            $newrows[] = $newrow;
-        }
-        ?>
-        <div class = "navigationContainer">
-        <div class = 'dropdown '>
-            <button class='btn btn-secondary btn-lg dropdown-toggle' type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Categories</button>
-              <div class='dropdown-menu fixed-top'>";
-                  <?php
-                //for each category echo the html to produce that element of the dropdown
-                foreach ($newrows as &$Category) {
-                    $Category = implode($Category);
-        
-                    if ($Category != null) {
-                        echo "
-                        <li onClick = \"document.getElementById('$Category').scrollIntoView({behavior:'smooth', block: 'center'});\">
-                            <a class='dropdown-item'>$Category</a>
-                        </li>"; //each element has a javascript function to scroll to view
-                    } else {
-                        echo "
-                        <li onClick = \"document.getElementById('$Category').scrollIntoView({behavior:'smooth', block: 'center'});\">
-                            <a class = 'dropdown-item'>Uncategorized</a>
-                        </li>"; //the uncategorized items get put at the bottom
-                    }
-                }
-                ?>
-                
-        </div>  
-        </div>
-            </div>
+    <div class = "navigationContainer">
+        <div class="pure-css-nav nav-justified nav-horizontal nav-font-icons">
+            <?php
+            //query the categories from the database
+            $con = connect();
+            $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
+            $Categories = mysqli_query($con, $sql);
+            while ($newrow = $Categories->fetch_row()) {
+                $newrows[] = $newrow;
+            }
+            echo "
+            <script>
 
+            function createDropDown(category){
+                document.getElementById(category).scrollIntoView({behavior:'smooth', block: 'center'});
+                dropDownMenu = document.getElementById('menucontainer');
+                dropDownMenu.style.display = 'none';
+               
+                }
+
+                function sayit() {
+                    dropDownMenu = document.getElementById('menucontainer');
+                    dropDownMenu.style.display = 'inline';
+
+                }
+                
+            
+            </script>
+            ";
+            //echo the beginning of the dropdown
+            echo "
+            <nav>
+            <ul>
+            <li id = 'dropDownButton' onmousedown='sayit()'><a>Categories</a>
+                <ul id = 'menucontainer'>";
+            //for each category echo the html to produce that element of the dropdown
+            foreach ($newrows as &$Category) {
+                $Category = implode($Category);
+
+                if ($Category != null) {
+                    echo "
+                    <li onClick = \"createDropDown('$Category')\">
+                    <a>$Category</a>
+                    </li>"; //each element has a javascript function to scroll to view
+                } else {
+                    echo "
+                    <li onClick = \"createDropDown('Uncategorized')\">
+                    <a>Uncategorized</a>
+                    </li>"; //the uncategorized items get put at the bottom
+                }
+            }
+
+            echo "
+                    </ul>
+                </li>
+                </ul>
+                </nav>
+            ";
+            ?>
+                    
+        </div>
+    </div>
     <!-- --------------------------------------end of dropdown stuff   -->
     <div class='header'>
         <a class='logo'>PRHC</a>
