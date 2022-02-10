@@ -5,11 +5,8 @@
   <?php //function defintitions
   //function defintitions
   include "includes/change.php";
-  include "includes/add_email.php";
-  include "includes/check_email.php";
   include "includes/CreateItemField.php";
   include "includes/sendemails.php";
-  include "includes/get_thresh.php";
   include "includes/item_count.php";
   include "includes/wh_log.php";
   include "includes/connect.php";
