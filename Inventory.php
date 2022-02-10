@@ -25,59 +25,66 @@
 
 <body>
 <!-- --------------------------------------dropdown stuff   -->
-
-<div class = "navigationContainer">
-<div class="pure-css-nav nav-justified nav-horizontal nav-font-icons">
-    <?php
-    //query the categories from the database
-    $con = connect();
-    $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
-    $Categories = mysqli_query($con, $sql);
-    while ($newrow = $Categories->fetch_row()) {
-        $newrows[] = $newrow;
-    }
-    //echo the beginning of the dropdown
-    echo "
-    <nav>
-    <ul>
-    <li><a>Categories</a>
-       <ul>";
-    //for each category echo the html to produce that element of the dropdown
-    foreach ($newrows as &$Category) {
-        $Category = implode($Category);
-
-        if ($Category != null) {
+    <div class = "navigationContainer">
+        <div class="pure-css-nav nav-justified nav-horizontal nav-font-icons">
+            <?php
+            //query the categories from the database
+            $con = connect();
+            $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
+            $Categories = mysqli_query($con, $sql);
+            while ($newrow = $Categories->fetch_row()) {
+                $newrows[] = $newrow;
+            }
+            echo "<script> 
+            function createDropDown(category){
+                imageForClick = document.getElementById('image');
+                document.getElementById(category).scrollIntoView({behavior:'smooth', block: 'center'});
+                imageForClick.click();
+            }
+            </script>
+            ";
+            //echo the beginning of the dropdown
             echo "
-            <li onclick = \"document.getElementById('$Category').scrollIntoView({behavior:'smooth', block: 'center'});\">
-              <a>$Category</a>
-            </li>"; //each element has a javascript function to scroll to view
-        } else {
-            echo "
-            <li onclick = \"document.getElementById('Uncategorized').scrollIntoView({behavior:'smooth', block: 'center'});\">
-              <a>Uncategorized</a>
-            </li>"; //the uncategorized items get put at the bottom
-        }
-    }
+            <nav>
+            <ul>
+            <li><a>Categories</a>
+                <ul>";
+            //for each category echo the html to produce that element of the dropdown
+            foreach ($newrows as &$Category) {
+                $Category = implode($Category);
 
-    echo "
-            </ul>
-          </li>
-          </ul>
-          </nav>
-      ";
-    ?>
-            
-  </div>
-  </div>
-        <!-- --------------------------------------end of dropdown stuff   -->
+                if ($Category != null) {
+                    echo "
+                    <li onclick = \"createDropDown('$Category')\">
+                    <a>$Category</a>
+                    </li>"; //each element has a javascript function to scroll to view
+                } else {
+                    echo "
+                    <li onclick = \"createDropDown('Uncategorized')\">
+                    <a>Uncategorized</a>
+                    </li>"; //the uncategorized items get put at the bottom
+                }
+            }
+
+            echo "
+                    </ul>
+                </li>
+                </ul>
+                </nav>
+            ";
+            ?>
+                    
+        </div>
+    </div>
+    <!-- --------------------------------------end of dropdown stuff   -->
     <div class='header'>
         <a class='logo'>PRHC</a>
         <div class='header-right'>
-          <a class='active'>I.T. Inventory</a>
+            <a class='active'>I.T. Inventory</a>
         </div>
         <div>
-          <img src="images/hospital.png" alt="Picture of hospital">
-      </div>
+            <img id='image' src="images/hospital.png" alt="Picture of hospital">
+        </div>
     </div>
     
     <script type="text/javascript" src="scripts/validate.js"></script>
@@ -116,7 +123,6 @@
                 }
                 foreach ($newItemrows2 as &$rowitem2) {
                     $rowitem2 = implode($rowitem2);
-
                     CreateItemField($rowitem2);
                 }
             }
