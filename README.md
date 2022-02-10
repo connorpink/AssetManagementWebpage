@@ -58,4 +58,4 @@ Youtube video instruction for below https://www.youtube.com/watch?v=4_NP_WYFmIM 
 24. sendmail_from = *YOUR EMAIL HERE* 
 25. sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
 
-}
+
