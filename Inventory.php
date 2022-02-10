@@ -45,12 +45,11 @@
             function createDropDown(category){
                 document.getElementById(category).scrollIntoView({behavior:'smooth', block: 'center'});
                 dropDownMenu = document.getElementById('menucontainer');
+                dropDownMenu.style.display = 'inline';
+                document.getElementById('dropDownMenu').blur();
                 
-                dropDownMenu.style.display = 'none';
-                sleep(500).then(() => {
-                    dropDownMenu.style.display = 'inline';
-                    document.getElementById('dropDownMenu').blur();
-                });
+              
+              
 
        
 
