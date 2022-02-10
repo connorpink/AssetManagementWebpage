@@ -44,7 +44,7 @@
     <nav>
     <ul>
     <li><a>Categories</a>
-      <ul>";
+       <ul>";
     //for each category echo the html to produce that element of the dropdown
     foreach ($newrows as &$Category) {
         $Category = implode($Category);
