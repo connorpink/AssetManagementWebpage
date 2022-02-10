@@ -79,7 +79,7 @@ input[type="number"] {
   vertical-align:middle;
 }
 .button {
-  right: 5%;
+  right: 2%;
   top: 4.9%;
   position: fixed;
   height: 4em;
@@ -173,7 +173,7 @@ p {
   z-index: 999;
   display:flex;
   position: fixed;
-  right: 25%;
+  right: 16%;
   top: 0.12%;
 
 }

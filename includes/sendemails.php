@@ -23,8 +23,8 @@
           $newDate = "INSERT INTO sendemail (Item, StoredDate) VALUES ('$item', '$currentDate');";
           $resultDate = mysqli_query($con, $newDate);
           if ($count < $threshold) {
-          mail('jleclerc@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca'); 
-          mail('jdeane@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca');
+            mail('jleclerc@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca'); 
+            mail('jdeane@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca');
             }
           } 
           mysqli_close($con);
@@ -41,8 +41,8 @@
             $newDate = "UPDATE sendemail SET StoredDate = '$currentDate' WHERE Item = '$item';";
             $resultDate = mysqli_query($con, $newDate);
             if ($count < $threshold) {
-            mail('jleclerc@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca'); 
-            mail('jdeane@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca');
+              mail('jleclerc@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca'); 
+              mail('jdeane@prhc.on.ca', 'Under Threshold Item Inventory', $item .': Currently at '. $count .', under threshold of '.$threshold, 'From: inventory@prhc.on.ca');
               }
             } 
             mysqli_close($con);

@@ -30,7 +30,7 @@
             <?php
             //query the categories from the database
             $con = connect();
-            $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC";
+            $sql = "SELECT DISTINCT Category FROM inventory ORDER BY Category";
             $Categories = mysqli_query($con, $sql);
             while ($newrow = $Categories->fetch_row()) {
                 $newrows[] = $newrow;
@@ -108,7 +108,7 @@
         //get all categories from database ordered by category with uncategorized at the bottom
         $con = connect();
         $sql =
-            "SELECT DISTINCT Category FROM inventory ORDER BY Category DESC;";
+            "SELECT DISTINCT Category FROM inventory ORDER BY Category;";
         $result = mysqli_query($con, $sql);
 
         mysqli_close($con);
