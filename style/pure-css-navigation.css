@@ -14,7 +14,7 @@ https://github.com/adamculpepper/pure-css-navigation
 .pure-css-nav > nav ul li a			{ font-size:2rem; /*line-height:50px;*/ padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
 
 /* Level 2 and beyond */
-.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y:scroll; height: 50vh}
+.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y:scroll; height: 70vh}
 .pure-css-nav > nav ul ul li a			{font-size:1.5rem; /*line-height:35px;*/ padding:8px 20px; width: 36vh;   }
 
 /* Hover colors */

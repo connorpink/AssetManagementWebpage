@@ -35,7 +35,7 @@
             while ($newrow = $Categories->fetch_row()) {
                 $newrows[] = $newrow;
             }
-            echo "<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+            echo "
             <script>
             
             function sleep (time) {
@@ -49,7 +49,10 @@
                 dropDownMenu.style.display = 'none';
                 sleep(500).then(() => {
                     dropDownMenu.style.display = 'inline';
+                    document.getElementById('image').focus();
                 });
+
+       
 
                 
             }
