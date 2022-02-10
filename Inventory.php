@@ -35,11 +35,14 @@
             while ($newrow = $Categories->fetch_row()) {
                 $newrows[] = $newrow;
             }
-            echo "<script> 
+            echo "<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script><script type='text/javascript'>
+            $('.dropDownButton').click(function(){
+                $('#menucontainer').toggle();
+            });
+            
             function createDropDown(category){
-                imageForClick = document.getElementById('image');
                 document.getElementById(category).scrollIntoView({behavior:'smooth', block: 'center'});
-                imageForClick.click();
+                
             }
             </script>
             ";
@@ -47,8 +50,8 @@
             echo "
             <nav>
             <ul>
-            <li><a>Categories</a>
-                <ul>";
+            <li class = 'dropDownButton'><a>Categories</a>
+                <ul id = 'menucontainer'>";
             //for each category echo the html to produce that element of the dropdown
             foreach ($newrows as &$Category) {
                 $Category = implode($Category);

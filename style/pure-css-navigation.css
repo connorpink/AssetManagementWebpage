@@ -11,11 +11,11 @@ https://github.com/adamculpepper/pure-css-navigation
 
 /* Level 1 */
 .pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05); }
-.pure-css-nav > nav ul li a			{font-size:2rem; /*line-height:50px;*/ padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
+.pure-css-nav > nav ul li a			{ font-size:2rem; /*line-height:50px;*/ padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
 
 /* Level 2 and beyond */
-.pure-css-nav > nav ul ul				{background-color:#f1f1f1;}
-.pure-css-nav > nav ul ul li a			{font-size:1.5rem; /*line-height:35px;*/ padding:8px 20px; width: 36vh;  }
+.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y:scroll; height: 50vh}
+.pure-css-nav > nav ul ul li a			{font-size:1.5rem; /*line-height:35px;*/ padding:8px 20px; width: 36vh;   }
 
 /* Hover colors */
 .pure-css-nav > nav ul li:hover,
@@ -38,9 +38,9 @@ CORE STYLES BELOW - NO TOUCHY
 z-index: 1000;
 }
 
-.pure-css-nav > nav ul,
+.pure-css-nav > nav ul,	
 .pure-css-nav > nav li					{margin:0; padding:0; list-style:none;}
-.pure-css-nav > nav li:hover			{cursor:pointer;}
+.pure-css-nav > nav li:hover			{cursor:pointer; }
 .pure-css-nav > nav a					{text-decoration:none;}
 
 /* Level 1 */
