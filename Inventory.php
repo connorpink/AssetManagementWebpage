@@ -35,13 +35,22 @@
             while ($newrow = $Categories->fetch_row()) {
                 $newrows[] = $newrow;
             }
-            echo "<script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script><script type='text/javascript'>
-            $('.dropDownButton').click(function(){
-                $('#menucontainer').toggle();
-            });
+            echo "<script type='text/javascript' src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js'></script>
+            <script>
             
+            function sleep (time) {
+                return new Promise((resolve) => setTimeout(resolve, time));
+              }
+
             function createDropDown(category){
                 document.getElementById(category).scrollIntoView({behavior:'smooth', block: 'center'});
+                dropDownMenu = document.getElementById('menucontainer');
+                
+                dropDownMenu.style.display = 'none';
+                sleep(500).then(() => {
+                    dropDownMenu.style.display = 'inline';
+                });
+
                 
             }
             </script>
@@ -50,7 +59,7 @@
             echo "
             <nav>
             <ul>
-            <li class = 'dropDownButton'><a>Categories</a>
+            <li id = 'dropDownButton'><a onClick=DisplayAgain() >Categories</a>
                 <ul id = 'menucontainer'>";
             //for each category echo the html to produce that element of the dropdown
             foreach ($newrows as &$Category) {
@@ -58,12 +67,12 @@
 
                 if ($Category != null) {
                     echo "
-                    <li onclick = \"createDropDown('$Category')\">
+                    <li onClick = \"createDropDown('$Category')\">
                     <a>$Category</a>
                     </li>"; //each element has a javascript function to scroll to view
                 } else {
                     echo "
-                    <li onclick = \"createDropDown('Uncategorized')\">
+                    <li onClick = \"createDropDown('Uncategorized')\">
                     <a>Uncategorized</a>
                     </li>"; //the uncategorized items get put at the bottom
                 }

@@ -79,11 +79,11 @@ input[type="number"] {
   vertical-align:middle;
 }
 .button {
+  right: 5%;
+  top: 4%;
   position: fixed;
   height: 4em;
   width: 12em;
-  right: 5%;
-  top: 4%;
   font-size: 25px;
   z-index: 999;
   background-color: #4283b9;
