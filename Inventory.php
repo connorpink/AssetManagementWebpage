@@ -47,9 +47,9 @@
                 dropDownMenu = document.getElementById('menucontainer');
                 
                 dropDownMenu.style.display = 'none';
-                sleep(1500).then(() => {
+                sleep(500).then(() => {
                     dropDownMenu.style.display = 'inline';
-                    document.getElementById('image').blur();
+                    document.getElementById('dropDownMenu').blur();
                 });
 
        
