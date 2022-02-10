@@ -49,7 +49,7 @@
                 dropDownMenu.style.display = 'none';
                 sleep(1500).then(() => {
                     dropDownMenu.style.display = 'inline';
-                    document.getElementById('image').focus();
+                    document.getElementById('image').blur();
                 });
 
        
