@@ -4,7 +4,6 @@ function CreateItemField($itemName){
     //run item_count function
     $itemcount = item_count($itemName);
     //get items threshold
-    $thresh = get_thresh($itemName);
     
     echo "<fieldset class = 'invis'>";
       echo "<p>$itemName</p>";
@@ -24,22 +23,18 @@ function CreateItemField($itemName){
       echo "<label class='amount' for='amount'>Amount:</label>" ;
       echo "<input type='number' min='0' max='500' id='numberBox$underScoreItemName' name='numberBox$underScoreItemName'></input>";
       //insctock tag with item count
-      echo "<label class='instock' id='instock$underScoreItemName'>Instock: ";echo $itemcount;echo"</label>";  
+      echo "<label class='instock' id='instock$underScoreItemName'>Instock: ";echo $itemcount[0];echo"</label>";  
     echo "</fieldset>";
 
-    if ($itemcount <= $thresh){
+    if ($itemcount[0] <= $itemcount[1]){
       //if item count is less than the threshold change color to red
       echo "<script> document.getElementById('instock$underScoreItemName').style.color = 'red'; </script>";//make red if below target
       //if item count is less than the threshold send appropriate email to notify such
-      if(check_email($itemName) == NULL)
-      {
-        add_email($itemName);
-      }
-      sendemails($itemcount, $thresh, $itemName);
+      sendemails($itemcount[0], $itemcount[1], $itemName);
 
     }
     //else if item count is within 1.5 of the treshold make color orange to signal low stock
-    else if ($itemcount <= ($thresh * 1.5)){//make orange if close to the threshold
+    else if ($itemcount[0] <= ($itemcount[1] * 1.5)){//make orange if close to the threshold
       echo "<script> document.getElementById('instock$underScoreItemName').style.color = 'orange'; </script>";
     }
     

@@ -3,11 +3,14 @@
 function item_count($item) {
       
     $con = connect();
-    $sql = "SELECT Count FROM inventory WHERE Item = '{$item}'";
+    $sql = "SELECT Count, Threshold FROM inventory WHERE Item = '{$item}'";
     $rs = mysqli_query($con, $sql);
     $stock = mysqli_fetch_array($rs);
     mysqli_close($con);
     //returns number of items
-    return $stock[0];
+
+    $hold = array($stock[0], $stock[1]);
+
+    return $hold;
   }
 ?>
