@@ -11,16 +11,16 @@ https://github.com/adamculpepper/pure-css-navigation
 
 /* Level 1 */
 .pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05); }
-.pure-css-nav > nav ul li a			{font-size:2rem; /*line-height:50px;*/ padding:13px 20px; font-weight: bold;}
+.pure-css-nav > nav ul li a			{font-size:2rem; /*line-height:50px;*/ padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
 
 /* Level 2 and beyond */
-.pure-css-nav > nav ul ul				{background-color:rgba(255, 255, 255, 0.9);}
-.pure-css-nav > nav ul ul li a			{font-size:1.5rem; /*line-height:35px;*/ padding:8px 20px; width: 36vh;}
+.pure-css-nav > nav ul ul				{background-color:#f1f1f1;}
+.pure-css-nav > nav ul ul li a			{font-size:1.5rem; /*line-height:35px;*/ padding:8px 20px; width: 36vh;  }
 
 /* Hover colors */
 .pure-css-nav > nav ul li:hover,
 .pure-css-nav > nav ul li li:hover > a:first-child:nth-last-child(2),
-.pure-css-nav > nav > ul > li:hover > a:first-child:nth-last-child(2) {background-color:#ddd;}
+.pure-css-nav > nav > ul > li:hover > a:first-child:nth-last-child(2) {background-color:#f5f5f5;}
 
 /* Font icon arrow colors */
 .pure-css-nav > nav > ul > li > a:first-child:nth-last-child(2):after {color:rgba(0, 0, 0, 0.30);}

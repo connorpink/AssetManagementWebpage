@@ -35,6 +35,14 @@
             while ($newrow = $Categories->fetch_row()) {
                 $newrows[] = $newrow;
             }
+            echo "<script> 
+            function createDropDown(category){
+                imageForClick = document.getElementById('image');
+                document.getElementById(category).scrollIntoView({behavior:'smooth', block: 'center'});
+                imageForClick.click();
+            }
+            </script>
+            ";
             //echo the beginning of the dropdown
             echo "
             <nav>
@@ -47,12 +55,12 @@
 
                 if ($Category != null) {
                     echo "
-                    <li onclick = \"document.getElementById('$Category').scrollIntoView({behavior:'smooth', block: 'center'});\">
+                    <li onclick = \"createDropDown('$Category')\">
                     <a>$Category</a>
                     </li>"; //each element has a javascript function to scroll to view
                 } else {
                     echo "
-                    <li onclick = \"document.getElementById('Uncategorized').scrollIntoView({behavior:'smooth', block: 'center'});\">
+                    <li onclick = \"createDropDown('Uncategorized')\">
                     <a>Uncategorized</a>
                     </li>"; //the uncategorized items get put at the bottom
                 }
@@ -75,7 +83,7 @@
             <a class='active'>I.T. Inventory</a>
         </div>
         <div>
-            <img src="images/hospital.png" alt="Picture of hospital">
+            <img id='image' src="images/hospital.png" alt="Picture of hospital">
         </div>
     </div>
     
