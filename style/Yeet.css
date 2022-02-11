@@ -12,7 +12,6 @@ body {
 .header, div {
   display: flex;
   flex-direction: row;
-  margin: 3vh;
   margin-top: 2vh;
 }
 
@@ -80,7 +79,7 @@ input[type="number"] {
 }
 .button {
   right: 2%;
-  top: 4.9%;
+  top:30px;
   position: fixed;
   height: 4em;
   width: 12em;
@@ -173,10 +172,160 @@ p {
   z-index: 999;
   display:flex;
   position: fixed;
-  right: 16%;
-  top: 0.12%;
+  right: 19%;
+  top: -20px;
 
+}
+.navigationContainer2{
+  z-index: 999;
+  display:flex;
+  position: fixed;
+  right: 45%;
+  top: -22px;
+  color:rgb(55, 145, 197);
+  padding: 4px;
+
+}.cartcontainer {
+  font-size: large;
 }
 
 
 
+
+.modal-wrapper{
+  background: rgba(0, 0, 0, 0.508);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: none;
+
+}
+.modal{
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  width: 100vh;
+  background: #fff;
+  padding: 20px;
+  margin: 35vh auto;
+  border-radius: 5px;
+  min-height: 40vh;
+  position: relative;
+  top: -10%;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+.modal-close{
+  margin: 10px auto;
+  color: white;
+  border: 1px solid black;
+  cursor:pointer;
+  width: 3vw;
+  border-radius: 5px;
+  position: absolute;
+  background: white;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0px;
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: (55, 145, 197);
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: rgb(55, 145, 197);
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 15%;
+  margin-right: 10px;
+}
+.modal-submit{
+  background: rgb(55, 145, 197);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 10px auto;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0px;
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: (55, 145, 197);
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 15%;
+  margin-left: 10px;
+}
+
+#modalCart {
+  color: black;
+  list-style: none;
+  overflow-y: scroll;  
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
+  max-height: 300px;
+ color: rgb(55, 145, 197);
+ font-weight: bold;
+}
+
+.modal-content{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.buttonsContainer{
+  display:flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content:end;
+}

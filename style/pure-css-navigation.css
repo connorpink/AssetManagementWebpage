@@ -6,15 +6,21 @@ https://github.com/adamculpepper/pure-css-navigation
 
 /* Customizable styles */
 .pure-css-nav > nav ul li a			{color:rgb(55, 145, 197);}
+.pure-css-nav > .small > nav ul li a			{color:rgb(55, 145, 197);}
 
 .pure-css-nav > nav > ul > li			{margin-right:1px; border-radius: 10px; width: 40vh;}
+.small > nav > ul > li			{width: 20vh;font-size: 2vh;font-weight: bold;  margin-top: 5px; }
+
+.small > nav > ul > ul			{background-color:#f5f5f5; overflow-y: scroll; height: 20vh; -ms-overflow-style: none;  scrollbar-width: none;  }
+
 
 /* Level 1 */
 .pure-css-nav > nav ul li				{background-color:rgba(0, 0, 0, 0.05);  }
 .pure-css-nav > nav ul li a			{  /*line-height:50px;*/ font-size: 4vh; padding:13px 20px; font-weight: bold;display: flex; flex-direction: column; justify-content: center;}
 
 /* Level 2 and beyond */
-.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y:scroll; height: 60vh;}
+.pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y: scroll; height: 45vh; -ms-overflow-style: none;  scrollbar-width: none;  }
+.pure-css-nav > nav ul ul::-webkit-scrollbar {display: none; }	
 .pure-css-nav > nav ul ul li a			{ /*line-height:35px;*/ padding:8px 20px; width: 36vh;  }
 
 /* Hover colors */
