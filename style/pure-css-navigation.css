@@ -22,6 +22,7 @@ https://github.com/adamculpepper/pure-css-navigation
 .pure-css-nav > nav ul ul				{background-color:#f1f1f1; overflow-y: scroll; height: 45vh; -ms-overflow-style: none;  scrollbar-width: none;  }
 .pure-css-nav > nav ul ul::-webkit-scrollbar {display: none; }	
 .pure-css-nav > nav ul ul li a			{ /*line-height:35px;*/ padding:8px 20px; width: 36vh;  }
+.small > nav ul ul li a			{ /*line-height:35px;*/ padding:8px 20px;   }
 
 /* Hover colors */
 .pure-css-nav > nav ul li:hover,
